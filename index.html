@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+<div class="main">
+    <div class="myscreen">
+     <div class="equation" id="equation">
+        
+     </div>
+     <div class="hint" id="hint">
+        
+     </div>
+    </div>
+
+    <div class="mycalc">
+    <button id="op" style="background-color: rgb(255, 115, 0); color: white; font-weight: 600;" onclick="reset()">c</button>
+    <button id="op" onclick="operation('+/-')">+/-</button>
+    <button id="op" onclick="operation('%')">%</button>
+    <button id="op" onclick="operation('/')">/</button>
+</div>
+    <div class="mycalc">
+        <button id="num" onclick="numberclick('7')">7</button>
+        <button id="num" onclick="numberclick('8')">8</button>
+        <button id="num" onclick="numberclick('9')">9</button>    
+        <button id="op"  onclick="operation('*')">*</button>    
+</div>
+    <div class="mycalc">
+        <button id="num" onclick="numberclick('4')">4</button>
+        <button id="num" onclick="numberclick('5')">5</button>
+        <button id="num" onclick="numberclick('6')">6</button>    
+        <button id="op"  onclick="operation('-')">-</button>    
+</div>
+    <div class="mycalc">
+        <button id="num" onclick="numberclick('1')">1</button>
+        <button id="num" onclick="numberclick('2')">2</button>
+        <button id="num" onclick="numberclick('3')">3</button>    
+        <button id="op"  onclick="operation('+')">+</button>    
+</div>
+    <div class="mycalc">
+        <button id="num0" onclick="numberclick('0')">0</button>
+        <button id="num">.</button>    
+        <button id="op" onclick="executeOperation()">=</button>    
+</div>
+</div>
+        <script>
+let equationscreen=document.getElementById('equation');
+let hint=document.getElementById('hint')
+ function numberclick(num){
+    equationscreen.innerHTML+=num;
+    hint.innerHTML+=num;
+ }
+ let num1;
+ let myoperation;
+ function operation(op){
+    num1=Number(equationscreen.innerHTML);
+    myoperation=op;
+    equationscreen.innerHTML="";
+    hint.innerHTML+=myoperation;
+ }
+
+ function executeOperation(){
+    let num2=Number(equationscreen.innerHTML);
+    let result;
+    switch(myoperation){
+        case '+':
+            result=num1+num2;
+            break;
+        case '-':
+            result=num1-num2;
+            break;
+        case '*':
+            result=num1*num2;
+            break;
+        case '/':
+            result=num1/num2;
+            break;
+        case '%':
+            result=num1/num2;
+            break;
+  
+       
+    }
+    equationscreen.innerHTML=result;
+    // to edit the hint after result appear
+ }
+signres=Number(result);
+ function reset(){
+    equationscreen.innerHTML="";
+    hint.innerHTML="";
+ }
+
+
+        </script>
+    </body>
+</html>
